@@ -1,5 +1,12 @@
-body {
+* {
+  box-sizing: border-box;
+}
+body,html {
+  height: 100%;
+  width: 100%;
   font-family: Helvetica, sans;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -11,32 +18,76 @@ h2 {
   margin: 0;
   font-size: 0.8em;
 }
-.headings {
-  margin-bottom: 2em;
-  text-align: center;
+h3, h4,
+strong {
+  color: #A50062;
+}
+h3 {
+  border-bottom: 1px solid #A50062;
 }
 
-.content-container {
+.container {
   width: 100%;
   height: 100%;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
-.content {
-  height: 100%;
-  max-width: 700px;
+
+.header {
+  padding: 1em;
+  text-align: center;
+  color: #fff;
+  background-color: #A50062;
+  /* background-image: url(../Lesbian_Pride_Flag_2019.svg); */
+  /* background-size: contain; */
+}
+
+.content-container {
+  width: 100%;
+  overflow: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  text-align: justify;
+  height: 100%;
 }
 
+.text-container {
+  width: 100%;
+  overflow: scroll;
+}
+.text {
+  padding: 0 1em 1em 1em;
+
+  text-align: justify;
+  line-height: 1.4em;
+}
+
+.map-container{
+  min-height: 40vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #map {
-  height: 500px;
-  width: 700px;
+  height: 100%;
+  width: 100%;
+}
+
+@media(min-width:600px) {
+  .content-container {
+    flex-direction: row;
+  }
+  .text-container {
+    height: 100%;
+  }
+  .map-container {
+    height: 100%;
+    padding: 1em 0 1em 1em;
+  }
 }
