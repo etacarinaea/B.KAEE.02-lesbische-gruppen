@@ -32,9 +32,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const sampleCSV = "asta, asta, asta, zhg, zhg, asta, zhg, sub-neu"
 
   // Map
-  let map = L.map("map").setView(mapCenter, 13);
+  let map = L.map("map").setView(mapCenter, 14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 16,
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
   }).addTo(map);
   // Scale
