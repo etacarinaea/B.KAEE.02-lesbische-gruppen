@@ -1,15 +1,87 @@
-function setupYearRangeInput(minYear, maxYear) {
+function parseChronologyMd(dataMd, map) {
+  let chronology = {
+    list: new Map(),
+    minYear: undefined,
+    maxYear: undefined,
+    hideAll: () => {
+      chronology.markers.forEach((e) => {
+        e.remove();
+      });
+    },
+    display: (year) => {
+      chronology.hideAll();
+      if(chronology.list.has(year)) {
+        chronology.list.get(year).forEach((e) => {
+          e.marker.addTo(map);
+        });
+      }
+    },
+    displayAll: () => {
+      chronology.markers.forEach((e) => {
+        e.addTo(map);
+      });
+    },
+    markers: []
+  };
+
+  dataMd.split("\n").forEach((e) => {
+    if(e === "") return;
+    let entryArr = e.split("|");
+    const year = entryArr[1].replace(/\s/g, "");
+    const coordinates = entryArr[6].replace(/\s/g, "").split(",");
+    const entry = {
+      date: entryArr[2],
+      title: entryArr[3],
+      description: entryArr[4],
+      source: entryArr[5],
+      coordinates: coordinates,
+      categories: entryArr[7].replace(/\s/g, "").split(","),
+      marker: undefined
+    };
+    entry.marker = L.marker(coordinates).bindTooltip(entry.title).addTo(map);
+    chronology.markers.push(entry.marker);
+
+    // if year is not in map, add new array
+    if(!chronology.list.has(year)) {
+      chronology.list.set(year, []);
+      let numYear = parseInt(year);
+      if(chronology.minYear === undefined) {
+        chronology.minYear = numYear;
+        chronology.maxYear = numYear;
+      } else {
+        if(chronology.minYear > numYear) chronology.minYear = numYear;
+        if(chronology.maxYear < numYear) chronology.maxYear = numYear;
+      }
+    }
+    chronology.list.get(year).push(entry);
+  });
+
+  return chronology;
+}
+
+function setupYearRangeControls(minYear, maxYear, chronology) {
   let yearRangeInput = document.getElementById("yearRangeInput");
   yearRangeInput.setAttribute("min", minYear);
   yearRangeInput.setAttribute("max", maxYear);
 
-  // Start out in the middle of the time span
-  const mid = (minYear+maxYear)/2;
+  const mid = Math.round((minYear+maxYear)/2);
   yearRangeInput.value = mid;
   yearRangeInput.nextElementSibling.innerText = mid;
 
   yearRangeInput.oninput = function() {
     this.nextElementSibling.innerText = this.value;
+    chronology.display(this.value);
+  };
+
+  let showAllYears = document.getElementById("showAllYears");
+  showAllYears.onchange = function() {
+    yearRangeInput.disabled = !yearRangeInput.disabled;
+    yearRangeInput.nextElementSibling.style.color = !yearRangeInput.disabled ? "#000000" : "#999999";
+    if(yearRangeInput.disabled) {
+      chronology.displayAll();
+    } else {
+      chronology.display(yearRangeInput.value);
+    }
   };
 }
 
@@ -76,8 +148,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     "fillOpacity": 0.5
   }
 
-  setupYearRangeInput(1960, 2000);
-
   // Map
   let map = L.map("map").setView(mapCenter, 14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -86,6 +156,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }).addTo(map);
   // Scale
   L.control.scale({imperial: false, metric: true}).addTo(map);
+
+
+  let chronology = parseChronologyMd(chronologyMd, map);
+
+  setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
 
   generateBubblesFromCSV(autonomesReferatP2, map, bubbleSize, bubbleAttributes);
 });

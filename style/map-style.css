@@ -44,6 +44,7 @@ h3 {
 }
 
 .yearRangeContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +55,7 @@ h3 {
 #yearRangeOutput {
   width: 4em;
   text-align: center;
+  color: #999999;
 }
 
 .content-container {
