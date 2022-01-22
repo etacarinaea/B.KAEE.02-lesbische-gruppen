@@ -13,10 +13,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     "fillOpacity": 0.5
   }
 
-
-  // Sample data
-  const sampleCSV = "asta, asta, asta, zhg, zhg, asta, zhg, sub-neu"
-
   // Map
   let map = L.map("map").setView(mapCenter, 14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -28,7 +24,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
   // Split CSV
-  let csvArr = sampleCSV.replace(/\s/g, "").split(",");
+  let csvArr = autonomesReferatP2.replace(/\s/g, "").split(",");
 
   // Count all occurences of places first so we can create a scale
   let placeCounts = {};
