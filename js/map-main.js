@@ -1,30 +1,13 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-  const mapCenter = [51.533, 9.935];
-
-  // Constants
-  const bubbleSize = {
-    "min": 20,
-    "max": 30
-  };
-  const bubbleAttributes = {
-    "stroke": false,
-    "fill": true,
-    "fillColor": "#A50062",
-    "fillOpacity": 0.5
-  }
-
-  // Map
-  let map = L.map("map").setView(mapCenter, 14);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 16,
-    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-  }).addTo(map);
-  // Scale
-  L.control.scale({imperial: false, metric: true}).addTo(map);
-
-
+/**
+ * Generates bubbles on a map from a string of CSV data
+ * @param {string} csvDataString A String containing the CSV data
+ * @param {object} map The map the CSV data should be added to
+ * @param {object} bubbleSize The min and max size of the bubbles
+ * @param {object} bubbleAttributes Attributes of the bubbles for drawing
+ */
+function generateBubblesFromCSV(csvDataString, map, bubbleSize, bubbleAttributes) {
   // Split CSV
-  let csvArr = autonomesReferatP2.replace(/\s/g, "").split(",");
+  let csvArr = csvDataString.replace(/\s/g, "").split(",");
 
   // Count all occurences of places first so we can create a scale
   let placeCounts = {};
@@ -61,4 +44,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
         ).addTo(map);
     }
   }
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  const mapCenter = [51.533, 9.935];
+
+  // Constants
+  const bubbleSize = {
+    "min": 10,
+    "max": 30
+  };
+  const bubbleAttributes = {
+    "stroke": false,
+    "fill": true,
+    "fillColor": "#A50062",
+    "fillOpacity": 0.5
+  }
+
+  // Map
+  let map = L.map("map").setView(mapCenter, 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 16,
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  }).addTo(map);
+  // Scale
+  L.control.scale({imperial: false, metric: true}).addTo(map);
+
+  generateBubblesFromCSV(autonomesReferatP2, map, bubbleSize, bubbleAttributes);
+
 });
