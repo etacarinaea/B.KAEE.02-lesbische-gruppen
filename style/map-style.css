@@ -43,6 +43,19 @@ h3 {
   /* background-size: contain; */
 }
 
+.yearRangeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#yearRangeInput {
+  flex: 1;
+}
+#yearRangeOutput {
+  width: 4em;
+  text-align: center;
+}
+
 .content-container {
   width: 100%;
   overflow: auto;

@@ -1,3 +1,18 @@
+function setupYearRangeInput(minYear, maxYear) {
+  let yearRangeInput = document.getElementById("yearRangeInput");
+  yearRangeInput.setAttribute("min", minYear);
+  yearRangeInput.setAttribute("max", maxYear);
+
+  // Start out in the middle of the time span
+  const mid = (minYear+maxYear)/2;
+  yearRangeInput.value = mid;
+  yearRangeInput.nextElementSibling.innerText = mid;
+
+  yearRangeInput.oninput = function() {
+    this.nextElementSibling.innerText = this.value;
+  };
+}
+
 /**
  * Generates bubbles on a map from a string of CSV data
  * @param {string} csvDataString A String containing the CSV data
@@ -61,6 +76,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     "fillOpacity": 0.5
   }
 
+  setupYearRangeInput(1960, 2000);
+
   // Map
   let map = L.map("map").setView(mapCenter, 14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -71,5 +88,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
   L.control.scale({imperial: false, metric: true}).addTo(map);
 
   generateBubblesFromCSV(autonomesReferatP2, map, bubbleSize, bubbleAttributes);
-
 });
