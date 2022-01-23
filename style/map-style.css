@@ -79,8 +79,11 @@ h3 {
   text-align: justify;
   line-height: 1.4em;
 }
+.text hr {
+  border: 1px solid #A50062;
+}
 
-.map-container{
+.map-container {
   min-height: 40vh;
   width: 100%;
 
@@ -92,6 +95,22 @@ h3 {
 #map {
   height: 100%;
   width: 100%;
+}
+
+.chart-container-float {
+  float: right;
+}
+.chart-container-center {
+  margin: 2em auto;
+  max-width: 300px;
+}
+.chart-title {
+  text-align: center;
+}
+.chart-source {
+  font-size: 0.6em;
+  line-height: 1.0em;
+  text-align: center;
 }
 
 @media(min-width:600px) {

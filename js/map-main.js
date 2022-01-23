@@ -163,4 +163,50 @@ window.addEventListener('DOMContentLoaded', (event) => {
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
 
   generateBubblesFromCSV(autonomesReferatP2, map, bubbleSize, bubbleAttributes);
+
+
+  // Charts
+
+  // stupa
+  const stupaData = {
+    labels: [
+      "LB",
+      "GAL",
+      "Wehrt Euch!",
+      "SHB",
+      "Juso-HSG",
+      "RUFUS",
+      "UFO",
+      "RCDS",
+      "DUG"
+    ],
+    datasets: [{
+      label: "StuPa 1987 Sitzverteilung",
+      data: [7, 12, 5, 1, 7, 1, 12, 12, 1],
+      backgroundColor: [
+        "#8a000a",
+        "#3e9b39",
+        "#8a000a",
+        "#8a000a",
+        "#e30013",
+        "#ffed00",
+        "#ffed00",
+        "#0170b9",
+        "#41a0e9"
+      ]
+    }]
+  };
+  const stupaConfig = {
+    type: "doughnut",
+    data: stupaData,
+    options: {
+      rotation: -90,
+      circumference: 180
+    }
+  }
+  const stupaPieChart = new Chart(
+    document.getElementById("stupaPieChart"),
+    stupaConfig
+  );
+
 });

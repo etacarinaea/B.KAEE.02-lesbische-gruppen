@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <link rel="stylesheet" href="style/map-style.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="data/index/places.js"></script>
     <script src="data/mentions/autonomes-referat-p2.js"></script>
@@ -28,12 +29,12 @@
             <input type="range" id="yearRangeInput" step="1" autocomplete="off" disabled></input>
             <div id="yearRangeOutput"></div>
             <input type="checkbox" id="showAllYears" name="showAllYears" autocomplete="off" checked></input>
-            <label for="showAllyears">Alle zeigen</label>
+            <label for="showAllyears">Alle anzeigen</label>
           </div>
         </div>
         <div class="text-container">
           <div class="text">
-            <div class="text-introduction">
+            <div id="text-introduction">
               <h3>Einführung</h3>
               <p>
                 Hier sollte ein kleiner Einführungstext stehen, der das Projekt
@@ -55,6 +56,107 @@
                 aktuelle Karte von OpenStreetMap, es kann also zum Beispiel sein,
                 dass Orte eingetragen sind die in 1980 nicht existierten, oder
                 sich an einer anderen Stelle befanden.
+              </p>
+            </div>
+            <div id="text-autonomes-referat-p2">
+              <h3>Autonomes Frauen/Lesbenreferat &mdash; Teil 2</h3>
+              <h4>Kritik am RCDS</h4>
+              <ul>
+                <li>Der RCDS hat sich oft frauenfeindlich geäußert und gegen
+                das allgemeinpolitische Mandat ausgesprochen</li>
+                <li>"allgemeinpolitisches Mandat" bedeutet, dass der AStA sich
+                zu allgemeinpolitischen Themen äussern darf, und sich nicht
+                nur auf die Hochschule beziehen muss (zum Beispiel könnte
+                man darüber diskutieren, ob Klimaschutz hochschulrelevant
+                ist)</li>
+                <li>Das autonome Frauenreferat hat den RCDS deswegen öfters
+                kritiesiert</li>
+              </ul>
+              <h4>1987 &mdash; Studentische Selbsverwaltung zerfällt</h4>
+              <ul>
+                <li>Eine rechte Koalition war nicht möglich</li>
+                <li>
+                  Eine linke Koalition wäre nur mit GAL und Juso-HSG
+                  Unterstützung möglich gewesen
+                </li>
+                <li>
+                  GAL und Juso-HSG waren zestritten, wollten daher nicht
+                  gemeinsam einen AStA stellen
+                </li>
+                <li>
+                  Ein "LB/MSB-Minderheiten-AStA" war eine Idee, die aber nicht
+                  funktionierte (keine genaueren Gründe angegeben). GAL und
+                  Juso-HSG hätten diese Minderheitsregierung unterstützt
+                </li>
+              </ul>
+
+              <div class="chart-container-center">
+                <div class="chart-title">
+                  Sitzverteilung im Studierendenparlament 1987 (58 Sitze)
+                </div>
+                <canvas id="stupaPieChart"></canvas>
+                <div class="chart-source">
+                  Quelle: Gabler, Andrea. "Sturm im Elfenbeinturm: Positionen und Aktionsformen des Gottinger AStA zu Wissenschafsbetrieb und politischem Mandat von 1967 bis 1987"
+                </div>
+              </div>
+              <!-- <table>
+                <tr><th>Liste</th><th>Sitze</th>
+                <tr><td>DUG</td><td>1</td>
+                <tr><td>RCDS</td><td>12</td>
+                <tr><td>UFO</td><td>12</td>
+                <tr><td>RUFUS</td><td>1</td>
+                <tr><td>Juso-HSG</td><td>7</td>
+                <tr><td>SHB</td><td>1</td>
+                <tr><td>Wehrt Euch!</td><td>5</td>
+                <tr><td>GAL</td><td>12</td>
+                <tr><td>LB</td><td>7</td>
+                </tr>
+              </table> -->
+              <ul>
+                <li>
+                  Es wurde kein Nachtragshaushalt beschlossen, da die Juso-HSG
+                  sich weigerte dafür zu stimmen
+                </li>
+                <li>
+                  Dadurch konnten die autonomen Referate nicht in der Form
+                  weiter existieren, da sie nicht in der Satzung stehen,
+                  sondern nur im Haushaltsplan erwähnt waren
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  Am Ende kam kein AStA zustande
+                </li>
+                <li>
+                  Dadurch wurde die studentische Selbstverwaltung durch einen
+                  Staatskommissar (gestellt von der Niedersächsischen
+                  Landesregierung (CDU)) übernommen
+                </li>
+              </ul>
+
+              <hr>
+              <h3>Notizen zu 1987:</h3>
+              <p>
+                MSB und SHB arbeiteten laut Gabler eng zusammen. In "1987-11
+                autonome Referate Ende.pdf" wird von einem
+                "LB/MSB-Minderheiten-AStA" gesprochen. Vielleicht ist also die
+                SHB gemeint, obwohl "Wehrt Euch!" auch eine linke Liste sein
+                könnte, in der die MSB enthalten ist.
+              </p>
+              <p>
+                "Wehr Euch!" muss eine linke Liste sein, da die anderen Listen
+                definitiv rechts sind, und es sonst die ganze Diskussion um einen
+                linken AStA gar nicht erst gegeben haette, weil gar keine linke
+                Mehrheit im StuPa vorhanden gewesen wäre.
+              </p>
+              <p>
+                <strong>Mögliche linke Koalitionen:</strong>
+                Es wurden 30 Sitze für eine Mehrheit benötigt.
+                <ul>
+                  <li>32 Sitze: LB (7) &amp; SHB (1) Minderheits-AStA, unterstützt durch GAL (12), Juso-HSG (7) und "Wehrt Euch!" (5)</li>
+                  <li>31 Sitze: LB (7) &amp; "Wehrt Euch!" (5) Minderheits-AStA, untersteutzt durch GAL (12) und Juso-HSG (7)</li>
+                  <li>31 Sitze: GAL (12), Juso-HSG (7), LB (7), "Wehrt Euch!" (5)</li>
+                <ul>
               </p>
             </div>
           </div>
