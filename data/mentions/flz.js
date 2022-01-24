@@ -1,0 +1,1 @@
+const mentions_flz = "flz, goe-tb, wee-lst, flz, flz, juzi, flz, flz, flz, flz, flz, n-rhaus, flz, flz, flz, flz, flz, flz, flz, flz, flz, sxsp, fuki-goe, flz, wee-lst, flz, om10, flz, flz, flz, wee-lst";

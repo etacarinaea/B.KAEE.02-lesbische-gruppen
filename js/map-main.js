@@ -87,14 +87,14 @@ function setupYearRangeControls(minYear, maxYear, chronology) {
 
 /**
  * Generates bubbles on a map from a string of CSV data
- * @param {string} csvDataString A String containing the CSV data
+ * @param {array} csvDataString An arrays containing strings containing the CSV data
  * @param {object} map The map the CSV data should be added to
  * @param {object} bubbleSize The min and max size of the bubbles
  * @param {object} bubbleAttributes Attributes of the bubbles for drawing
  */
-function generateBubblesFromCSV(csvDataString, map, bubbleSize, bubbleAttributes) {
+function generateBubblesFromCSV(csvDataStrings, map, bubbleSize, bubbleAttributes) {
   // Split CSV
-  let csvArr = csvDataString.replace(/\s/g, "").split(",");
+  let csvArr = csvDataStrings.join(",").replace(/\s/g, "").split(",");
 
   // Count all occurences of places first so we can create a scale
   let placeCounts = {};
@@ -162,7 +162,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
 
-  generateBubblesFromCSV(autonomesReferatP2, map, bubbleSize, bubbleAttributes);
+  generateBubblesFromCSV(
+    [mentions_flz, mentions_autonomesReferatP2],
+    map, bubbleSize, bubbleAttributes);
 
 
   // Charts
