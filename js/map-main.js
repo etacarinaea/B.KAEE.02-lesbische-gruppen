@@ -211,4 +211,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
     stupaConfig
   );
 
+
+  // Collapsibles
+  const collapsibles = document.getElementsByClassName("collapsible-button");
+  Array.prototype.forEach.call(collapsibles, (e) => {
+    e.addEventListener("click", function() {
+      let content = this.nextElementSibling;
+      if(content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  });
+
 });
