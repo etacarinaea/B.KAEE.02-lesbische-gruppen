@@ -169,7 +169,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
 
   generateBubblesFromCSV(
-    [mentions_flz, mentions_autonomesReferatP2],
+    [mentions_flz, mentions_autonomesReferatP2,
+    mentions_agilWalpFidl, mentions_c],
     map, bubbleSize, bubbleAttributes);
 
 
