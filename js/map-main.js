@@ -38,7 +38,7 @@ function parseChronologyMd(dataMd, map) {
       categories: entryArr[7].replace(/\s/g, "").split(","),
       marker: undefined
     };
-    entry.marker = L.marker(coordinates).bindTooltip(entry.title).addTo(map);
+    entry.marker = L.marker(coordinates).bindTooltip(entry.title + "<hr>" + entry.date).addTo(map);
     chronology.markers.push(entry.marker);
 
     // if year is not in map, add new array
