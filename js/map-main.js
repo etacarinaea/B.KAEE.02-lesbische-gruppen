@@ -116,18 +116,23 @@ function generateBubblesFromCSV(csvDataStrings, map, bubbleSize, bubbleAttribute
     let placeCountArr = Object.values(placeCounts);
     placeMin = Math.min(...placeCountArr);
     placeMax = Math.max(...placeCountArr);
+    if(placeMax > bubbleSize.cutoff) {
+      placeMax = bubbleSize.cutoff;
+    }
   }
   // Iterate through all place counts and generate bubbles
   for(let i = 0; i < Object.keys(placeCounts).length; ++i) {
     let placeName = Object.keys(placeCounts)[i];
-    let count = placeCounts[placeName];
+    let realCount = placeCounts[placeName];
+    let count = realCount > bubbleSize.cutoff ? bubbleSize.cutoff : realCount;
+
 
     if(count > 0) {
       let radius = ((count-placeMin)/(placeMax-placeMin))*(bubbleSize.max-bubbleSize.min) + bubbleSize.min;
       L.circleMarker(indexPlaces[placeName].coords, {...{radius: radius}, ...bubbleAttributes})
         .bindTooltip(
           indexPlaces[placeName].desc
-          + "<hr>Erwähnungen: " + count.toString()
+          + "<hr>Erwähnungen: " + realCount.toString()
         ).addTo(map);
     }
   }
@@ -139,7 +144,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // Constants
   const bubbleSize = {
     "min": 10,
-    "max": 30
+    "max": 30,
+    "cutoff": 10
   };
   const bubbleAttributes = {
     "stroke": false,
