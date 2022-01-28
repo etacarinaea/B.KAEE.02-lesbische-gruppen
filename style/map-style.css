@@ -48,6 +48,10 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 1em;
+}
+.yearRangeContainer label {
+  white-space: nowrap;
 }
 #yearRangeInput {
   flex: 1;
@@ -56,6 +60,29 @@ h3 {
   width: 4em;
   text-align: center;
   color: #999999;
+}
+
+#hideMap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+  border: none;
+
+  background-color: #A50062;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 900;
+}
+#hideMap:hover {
+  background-color: #C52082;
+}
+@media(min-width:600px) {
+  #hideMap {
+    display: none;
+  }
 }
 
 .content-container {

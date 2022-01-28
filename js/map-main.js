@@ -167,6 +167,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let chronology = parseChronologyMd(chronologyMd, map);
 
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
+  let hideMapButton = document.getElementById("hideMap");
+  hideMapButton.addEventListener("click", function() {
+    let mapContainer = document.getElementsByClassName("map-container")[0];
+    if(mapContainer.style.display === "none") {
+      mapContainer.style.display = "flex";
+      this.innerText = "Karte verbergen";
+    } else {
+      mapContainer.style.display = "none";
+      this.innerText = "Karte anzeigen";
+    }
+  });
 
   generateBubblesFromCSV(
     [mentions_flz, mentions_autonomesReferatP2,
