@@ -139,7 +139,7 @@ function generateBubblesFromCSV(csvDataStrings, map, bubbleSize, bubbleAttribute
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  const mapCenter = [51.533, 9.935];
+  const mapCenter = [51.538, 9.935];
 
   // Constants
   const bubbleSize = {
