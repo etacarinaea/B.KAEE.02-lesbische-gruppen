@@ -199,4 +199,16 @@ const indexPlaces = {
   //   "desc": "",
   //   "coords": []
   // },
+  "bielefeld": {
+    "desc": "Bielefeld",
+    "coords": [52.021111, 8.534722]
+  },
+  "hafenstr": {
+    "desc": "Hafenstraße",
+    "coords": [53.546389, 9.959444]
+  },
+  "kiefernstr": {
+    "desc": "Kiefernstraße",
+    "coords": [51.2192, 6.8096]
+  },
 };
