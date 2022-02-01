@@ -32,6 +32,10 @@ h5 {
   margin: 0.5em 0;
 }
 
+td:first-child {
+  padding-right: 1em;
+}
+
 .container {
   width: 100%;
   height: 100%;

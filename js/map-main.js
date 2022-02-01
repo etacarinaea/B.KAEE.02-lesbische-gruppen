@@ -25,7 +25,7 @@ function parseChronologyMd(dataMd, map) {
       });
     },
     markers: [],
-    markerCluster: L.markerClusterGroup({showCoverageOnHover: false, maxClusterRadius: 10})
+    markerCluster: L.markerClusterGroup({showCoverageOnHover: false, maxClusterRadius: 40})
   };
 
   let markerIcon = L.icon({
