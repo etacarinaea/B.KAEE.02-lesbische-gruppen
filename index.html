@@ -9,14 +9,21 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <link rel="stylesheet" href="style/map-style.css" />
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="data/index/places.js"></script>
+    <script src="data/mentions/autonomes-referat-p1.js"></script>
     <script src="data/mentions/autonomes-referat-p2.js"></script>
     <script src="data/mentions/flz.js"></script>
     <script src="data/mentions/agil-walp-fidl.js"></script>
     <script src="data/mentions/c.js"></script>
+    <script src="data/mentions/j.js"></script>
     <script src="data/chronology.js"></script>
     <script src="js/map-main.js"></script>
   </head>
@@ -41,44 +48,198 @@
           <div class="text">
             <div id="text-introduction">
               <h3>Einführung</h3>
-              <p>
-                Hier sollte ein kleiner Einführungstext stehen, der das Projekt
-                erklärt.
-              </p>
               <h4>Karte</h4>
               <p>
-                Auf der Karte sind die Orte zu sehen, die in den Quellen erwähnt
-                werden. Dabei gibt die Größe der Kreise die relative Anzahl der
-                Erwähnungen an.
+                Auf der Karte sind die Orte zu sehen, die in den Quellen
+                erwähnt werden. Dabei gibt die Größe der Kreise die relative
+                Anzahl der Erwähnungen an (cutoff bei 10 Erwähnungen).
+              </p>
+              <p>
+                Die Markierungen zeigen Ereignisse aus der
+                <a href="#text-chronology">Chronologie</a>. Mit dem Slider
+                unter der Karte kann ein Jahr ausgewählt werden für das die
+                Ereignisse angezeigt werden sollen.
+              </p>
+              <p>
+                Die Karte lässt sich vergrössern und verkleinern, es sind
+                mehrere Orte und Ereignisse auch ausserhalb von Göttingen
+                eingetragen.
               </p>
 
               <p>
                 <strong>Bemerkung:</strong> Die Hintergrundkarte ist eine
-                aktuelle Karte von OpenStreetMap, es kann also zum Beispiel sein,
-                dass Orte eingetragen sind die in 1980 nicht existierten, oder
-                sich an einer anderen Stelle befanden.
+                aktuelle Karte von OpenStreetMap, es kann also sein, dass
+                Straßen, Gebäude, etc. eingezeichnet sind, die zu der Zeit
+                der Quellen nicht existierten, oder Orte aus den Quellen nicht
+                eingezeichnet sind, weil sie nicht mehr existieren.
               </p>
+              <h4>Inhaltsverzeichnis</h4>
+              <ol>
+                <a href="#text-introduction"><li>Einführung</li></a>
+                <a href="#text-kontextualisierung"><li>Kontextualisierung</li></a>
+                <a href="#text-autonomes-referat-p1"><li>Autonomes Frauen-/Lesbenreferat &mdash; Teil 1</li></a>
+                <a href="#text-autonomes-referat-p2"><li>Autonomes Frauen-/Lesbenreferat &mdash; Teil 2</li></a>
+                <a href="#text-flz"><li>FrauenLesbenZentrum</li></a>
+                <a href="#text-j"><li>Antirassistischer Aktivismus</li></a>
+                <a href="#text-c"><li>Frauen in der AGIL, Frauenzentrum, Frauenhaus</li></a>
+                <a href="#text-chronology"><li>Chronologie</li></a>
+              </ol>
+            </div>
+            <div id="text-kontextualisierung">
+              <h3>Kontextualisierung</h3>
+              <ul>
+                <li>
+                  Zweite Welle des Feminismus
+                </li>
+                <li>
+                  Kommunismus, Teilung Deutschlands
+                </li>
+                <li>
+                  68er-Bewegung ⟶ Spontis ⟶ Autonome, Linksradikale
+                </li>
+                <li>
+                  Große Bedrohung von Rechts durch Neonazis
+                </li>
+                <li>
+                  Babyboomer ⟶ Jugend stellt Mehrheit dar
+                </li>
+              </ul>
+            </div>
+            <div id="text-autonomes-referat-p1">
+              <h3>Autonomes Frauen-/Lesbenreferat &mdash; Teil 1</h3>
+              <h4>Erste Vollversammlung</h4>
+              <ul>
+                <li>Fand am 23.05.1980 statt</li>
+                <li>Stellt Legitimationsinstrument des autonomen Frauenreferats dar</li>
+                <li>Frauenreferat stellt Arbeit und Erfolge vor, sowie aktuelle Projekte und Arbeitsgruppen</li>
+                <li>Alle Frauen die möchten kommen zur Versammlung und können abstimmen über
+                  <ul>
+                  <li>Ziele</li>
+                  <li>Referentinnen</li>
+                  <li>Vorsitzende</li>
+                  </ul>
+                </li>
+                <li>Es gibt manchmal auch
+                  <ul>
+                    <li>Diskussionen</li>
+                    <li>Buchvorstellungen</li>
+                  </ul>
+                </li>
+              </ul>
+              <h4>Positionen</h4>
+              <ul>
+                <li>Pro Abtreibung</li>
+                <li>Pro Aufklärung, Verhütung</li>
+                <li>Gegen Sexismus</li>
+                <li>Gegen sexualisierte Gewalt</li>
+                <li>Gegen Militarismus</li>
+                <li>Strukturelle Benachteiligung beenden (Beruflich, Studium, Gesellschaftlich)</li>
+                <li>Autonomie Forderungen</li>
+                <li>Frauenerstrederecht im AStA</li>
+                <li>Stimmrecht im AStA</li>
+                <li>Mehr Geld für das Autonome Frauenreferat</li>
+                <li>Mehr Repräsentation von Frauen und Frauenthemen in der Wissenschaft, Universität und Veranstaltungen</li>
+                <li>Vereinbarkeit des Studiums mit Kindern</li>
+                <li>Bafög sollte kein Volldarlehen sein</li>
+              </ul>
+              <h4>Kritik</h4>
+              <ul>
+                <li>Gleichberechtigung als Nebenwiderspruch?</li>
+                <li>Klassismus wichtiger als Sexismus</li>
+                <li>Frauenpolitik ist Minderheitenpolitik daher kann sie nicht zentral sein</li>
+                <li>Frauenpolitik kann man nicht ernst nehmen, Frauen übertreiben</li>
+              </ul>
+              <h4>Demos / Aktionen</h4>
+              <ul>
+                <li>Bischofskonferenz und Papstbesuch</li>
+                <li>Demonstrationen in Frankfurt und Karlsruhe gegen §218</li>
+                <li>Frauenblock gegen Einbeziehung ins Militär und CDU für Abtreibungsrechte und gegen Vergewaltigung, Verweigerungsaktionen gegen Militarismus</li>
+                <li>Abtreibungsgegnern Flyer wegnehmen</li>
+                <li>Positionierung gegen Burschenschaften</li>
+                <li>Frauenfeste</li>
+                <li>Walpurgisnächte, Hexenmärsche, Frauenblock</li>
+                <li>Blockade Stadthalle wegen „Frauenschlammcatchen“</li>
+                <li>Lesungen, Diskussionen und Vorträge zum Thema Frauenrechte, Gesellschaftliche Position der Frauen, Patriachat...</li>
+              </ul>
+              <div class="forschungsfragen">
+                <h4>Forschungsfragen</h4>
+                <ul>
+                  <li>Was hat die FrauenLesben Bewegung in Göttingen erreicht?</li>
+                  <li>Wie divers und intersektionell orientiert war die Bewegung?</li>
+                  <li>Was gab es für Konflikte innerhalb der Bewegung?</li>
+                  <li>Was gab es für Opposition?</li>
+                  <li>War die Bewegung vernetzt?</li>
+                </ul>
+              </div>
             </div>
             <div id="text-autonomes-referat-p2">
-              <h3>Autonomes Frauen/Lesbenreferat &mdash; Teil 2</h3>
-              <h4>Kritik am RCDS</h4>
+              <h3>Autonomes Frauen-/Lesbenreferat &mdash; Teil 2</h3>
+              <h4>Kritik am RCDS, und anderen rechten Gruppen</h4>
               <ul>
-                <li>Der RCDS hat sich oft frauenfeindlich geäußert und gegen
-                das allgemeinpolitische Mandat ausgesprochen</li>
-                <li>"allgemeinpolitisches Mandat" bedeutet, dass der AStA sich
-                zu allgemeinpolitischen Themen äussern darf, und sich nicht
-                nur auf die Hochschule beziehen muss (zum Beispiel könnte
-                man darüber diskutieren, ob Klimaschutz hochschulrelevant
-                ist)</li>
-                <li>Das autonome Frauenreferat hat den RCDS deswegen öfters
-                kritiesiert</li>
+                <li>Der RCDS und andere rechte Gruppen haben sich oft
+                  frauenfeindlich geäußert, wofür sie vom AStA und
+                  vom autonomen Frauenreferat kritisiert wurden</li>
+                <li>Der RCDS hat sich oft gegen das allgemeinpolitische Mandat
+                ausgsprochen (siehe Anmerkungen für Erklärung des
+                allgemeinpolitischen Mandats)</li>
+              </ul>
+              <h4>Kritik an der GAL, den Jusos, und anderen linken Gruppen</h4>
+              <ul>
+                <li>Das autonome Frauenreferat kritisiert die GAL dafür,
+                  dass ihr "grüne" Theme wichtiger seien als das autonome
+                  Frauenreferat ("Naturkost" in der Mensa sei ihr wichtiger als
+                  Feminismus)</li>
+              </ul>
+              <ul>
+                <li>Die Juso-HSG und die Jusos allgemein werden dafür
+                  kritisiert, nicht genug fuer die Frauenbewegung getan zu
+                  haben</li>
+                <li>Insbesondere wird die Juso-HSG wegen den Konflikten mit der
+                  GAL und die daraus resultierenden Probleme im StuPa
+                  kritisiert</li>
+              </ul>
+              <ul>
+                <li>Linke Männer werden wegen ihrem Umgang mit Frauen und
+                  der Frauenbewegung kritisiert</li>
+              </ul>
+              <h4>Kritik am autonomen Frauenreferat</h4>
+              <ul>
+                <li>Auf mehreren Vollversammlungen wird das Kollektiv/die
+                  Referentin, die das autonome Referat leiten, für ihre
+                  Arbeitsweisen kritisiert</li>
+                <li>Als Antwort darauf veröffentlicht das Kollektiv
+                  ein Selbstverständnis und geht auf die Kritik in Flugblättern
+                  ein</li>
+              </ul>
+              <h4>1986 &mdash; AStA tritt zurück</h4>
+              <ul>
+                <li>Der AStA tritt aufgrund von "politischer Kontroversen"
+                zurück</li>
+                <li>Wahrscheinlich war damit der Konflikt zwischen
+                GAL und Juso-HSG gemeint</li>
+                <li>Der AStA bestand aus:
+                  <ul>
+                    <li>Juso-HSG (Vorstand, Kulturreferat)</li>
+                    <li>LiA (Finanzen, Außenreferat)</li>
+                    <li>MSB (Sozialreferat)</li>
+                    <li>GAL (Hochschulreferat)</li>
+                  </ul>
+                </li>
+                <li>Es wurde durch den Rücktritt und den Konflikt zwischen GAL
+                  und Jusos kein Haushalt beschlossen, was die existenz der
+                  autonomen Referate bedroht</li>
+                <li>Es wird gefordert einen Rumpfhaushalt zu beschließen</li>
               </ul>
               <h4>1987 &mdash; Studentische Selbsverwaltung zerfällt</h4>
               <ul>
-                <li>Eine rechte Koalition war nicht möglich</li>
-                <li>
-                  Eine linke Koalition wäre nur mit GAL und Juso-HSG
-                  Unterstützung möglich gewesen
+                <li>Situation im Studierendenparlament Ende 1987:
+                  <ul>
+                    <li>Eine rechte Koalition war nicht möglich</li>
+                    <li>
+                      Eine linke Koalition wäre nur mit GAL und Juso-HSG
+                      Unterstützung möglich gewesen
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   GAL und Juso-HSG waren zestritten, wollten daher nicht
@@ -97,7 +258,7 @@
                 </div>
                 <canvas id="stupaPieChart"></canvas>
                 <div class="chart-source">
-                  Quelle: Gabler, Andrea. "Sturm im Elfenbeinturm: Positionen und Aktionsformen des Gottinger AStA zu Wissenschafsbetrieb und politischem Mandat von 1967 bis 1987"
+                  Quelle: Gabler, Andrea. "Sturm im Elfenbeinturm: Positionen und Aktionsformen des Gottinger AStA zu Wissenschafsbetrieb und politischem Mandat von 1967 bis 1987". S.176
                 </div>
               </div>
               <!-- <table>
@@ -116,7 +277,8 @@
               <ul>
                 <li>
                   Es wurde kein Nachtragshaushalt beschlossen, da die Juso-HSG
-                  sich weigerte dafür zu stimmen
+                  sich weigerte dafür zu stimmen (wahrscheinlich auch wegen dem
+                  Konflikt mit der GAL)
                 </li>
                 <li>
                   Dadurch konnten die autonomen Referate nicht in der Form
@@ -134,31 +296,138 @@
                   Landesregierung (zu der Zeit CDU)) übernommen
                 </li>
               </ul>
-              <h4>Forschungsfragen</h4>
+              <h4>Und dann?</h4>
               <ul>
                 <li>
-                  Was war die Einstellung des autonomen Frauenreferats
-                  gegenüber trans Menschen, insbesondere trans Frauen?
+                  Lücke in den Quellen des autonome Referats für 1988,
+                  sehr wahrscheinlich weil es nicht existierte, da der
+                  Staatskommissar die Verwaltung für dieses Jahr übernahm
                 </li>
                 <li>
-                  Was waren die Dynamiken zwischen und in den Hoschulgruppen?
-                  Was waren Konflikte zwischen links und rechts, und welche
-                  Konflikte gab es unter oder innerhalb der linken HSGs?
+                  In 1989 wieder ein Flugblatt, aber dieses Mal vom
+                  <strong>autonomen Frauen/Lesbenreferat</strong> (vorher nur
+                  autonomes Frauenreferat) und autonomen Schwulenreferat
+                  zusammen
+                </li>
+                <li>
+                  Flugblatt ruft zu den Hochschulwahlen auf, bitten linke
+                  Gruppen zu wählen, damit eine linke Mehrheit im StuPa
+                  zustande kommt und für den Fortbestand der autonomen Referate
+                  sorgt
+                </li>
+                <li>
+                  RCDS und Jusos werden in diesem Flugblatt kritisiert. RCDS
+                  wegen Frauenfeindlichkeit, und Jusos wegen der Situation 1986
+                  und 1987 und ihr geringes Engagement für die Frauenbewegung
+                </li>
+                <li>
+                  Es wird implizit GAL und NLB (neu in 1989) zur Wahl empfohlen
                 </li>
               </ul>
+              <div class="forschungsfragen">
+                <h4>Forschungsfragen</h4>
+                <ul>
+                  <li>
+                    Was waren die Dynamiken zwischen und in den Hoschulgruppen?
+                    Was waren Konflikte zwischen links und rechts, und welche
+                    Konflikte gab es unter oder innerhalb der linken HSGs?
+                  </li>
+                  <li>
+                    Was war die Einstellung des autonomen Frauenreferats
+                    gegenüber trans Menschen, insbesondere trans Frauen? Waren
+                    trans Menschen in dem Begriff "Frau" oder "Lesbe" enthalten,
+                    und wenn ja, auf welche Weise?
+                  </li>
+                  <li>
+                    Was passierte während der Zeit in der der Staatskommissar
+                    die Verwaltung übernahm? Welche langfristigen Folgen hatte
+                    das auf die studentische Selbstverwaltung (u.a. auch die
+                    Wahlbeteiligung und die Sitzverteilung im StuPa). Wie
+                    wirkte sich das auf die Meinung der Universität und der
+                    Kommunal- und Landespolitik auf die studentische
+                    Selbstverwaltung in Göttingen aus?
+                  </li>
+                  <li>
+                    Was führte zu der endgültigen Abschaffung der autonomen
+                    Referate? Hatte es Einfluss darauf, dass in den
+                    vergangenen Jahren Studierendenparlamente mit linken
+                    Mehrheiten autonome Referate in Göttingen nicht wieder
+                    eingeführt haben?
+                  </li>
+                </ul>
+              </div>
 
               <div class="collapsible-container">
                 <button type="button" class="collapsible-button">
                   <h3>Anmerkungen</h3>
                 </button>
                 <div class="collapsible-content">
+                  <h4>Abkürzungen</h4>
+                  <table>
+                    <tr><td>AStA</td><td>Allgemeiner Studierendenausschuss</td></tr>
+                    <tr><td>StuPa</td><td>Studierendenparlament</td></tr>
+                    <tr><td>HSG</td><td>Hochschulgruppe</td></tr>
+                    <tr><td>RCDS</td><td>Ring Christlich Demokratischer Studenten</td></tr>
+                    <tr><td>Jusos</td><td>Jungsozialisten in der SPD</td></tr>
+                    <tr><td>GAL</td><td>Grün Alternative Liste</td></tr>
+                    <tr><td>LiA</td><td>Linke Alternative</td></tr>
+                    <tr><td>MSB</td><td>Marxistischer Studentenbund</td></tr>
+                    <tr><td>LB</td><td>Linkes Bündnis</td></tr>
+                  </table>
+                  <h4>Allgemeinpolitisches und Hochschulpolitisches Mandat</h4>
+                  <p>
+                    Verfasste Studierendenschaften (zumindest in Niedersachsen,
+                    in manchen Bundesländern existieren auch andere Regelungen)
+                    sind Körperschaften des öffentlichen Rechts mit
+                    Pflichtmitgliedschaft, die der jeweiligen Hochschule
+                    untergeordnet sind.
+                  </p>
+                  <p>
+                    Durch die Pflichtmitgliedschaft sind solche Körperschaften
+                    gesetzlich dazu verpflichtet, sich nur in Bezug ihres
+                    Aufgabenfeldes zu äussern.
+                  </p>
+                  <p>
+                    Für die Verfasste Studierendenschaft (und damit auch den
+                    AStA) heißt das, dass sie sich nur mit Bezug zur
+                    Hochschule äussern darf (Hochschulpolitisches Mandat).
+                  </p>
+                  <p>
+                    Die Kontroverse um das Allgemein/Hochschulpolitische Mandat
+                    besteht darin, dass man viele Themen so auslegen kann, dass
+                    sie Hochschulbezug haben, auch wenn sie nur sehr wenig mit
+                    der Hochschule direkt zu tun haben.
+                  </p>
+                  <p>
+                    So könnte man zum Beispiel "Klimaschutz" als
+                    hochschulrelevantes Thema darstellen, in dem man
+                    erklärt, dass "Klimaschutz uns alle betrifft und damit auch
+                    die Hochschule und die Studierendenschaft".
+                  </p>
+                  <p>
+                    Der RCDS kritisiert diese "Umgehung" des Gesetzes, auch
+                    heutzutage noch, während linke Gruppen sich für eine
+                    Abschaffung dieses Gesetzes aussprechen, da eine wirkliche
+                    Trennung von Hochschul- und Allgemeinpolitik gar nicht
+                    möglich ist.
+                  </p>
+
                   <h4>"Hochschulgruppen"</h4>
-                  Mit Hochschulgruppen sind nicht immer eingetragene
-                  Hochschulgruppen (Vereine) gemeint, sondern auch loosere
-                  Gruppen, die zusammen eine Vorschlagsliste zu den StuPa
-                  Wahlen eingereicht hatten (z.B. war das der Fall bei der
-                  GAL, vergleichbar mit der Alternativen Linken Liste (ALL)
-                  heutzutage, die u.a. aus mehreren Basisgruppen besteht).
+                  <p>
+                    Mit Hochschulgruppen sind nicht immer eingetragene
+                    Hochschulgruppen (Vereine) gemeint, sondern auch loosere
+                    Gruppen, die zusammen eine Vorschlagsliste zu den StuPa
+                    Wahlen eingereicht hatten (z.B. war das der Fall bei der
+                    GAL, vergleichbar mit der Alternativen Linken Liste (ALL)
+                    heutzutage, die u.a. aus mehreren Basisgruppen besteht).
+                  </p>
+                  <p>
+                    Dabei ist auch zu beachten, dass die Juso-HSG und die
+                    Jusos nicht unbedingt das gleiche sind, auch wenn sie sich
+                    sehr wahrscheinlich stark überschneiden. Genauso sind
+                    Mitglieder der Grünen Hochschulgruppe oder GAL nicht
+                    unbedingt Mitglieder der Grünen, oder stehen den Grünen.
+                  </p>
 
                   <h4>Anmerkungen zu 1987</h4>
                   <p>
@@ -185,6 +454,148 @@
                     <ul>
                   </p>
                 </div>
+              </div>
+            </div>
+            <div id="text-flz">
+              <h3>FrauenLesbenZentrum</h3>
+              <h4>Geschichte des FrauenLesbenZentrums</h4>
+              <ul>
+                <li>Oktober 1988: Eröffnung des FLZ in der Düsteren Straße 21</li>
+                <li>Umbau/Sanierung des FLZ durch Frauen</li>
+                <li>Mai 1989: Großer Umbau des FLZ</li>
+                <li>Juni 1992: Kündigung des FLZ durch die Stadt</li>
+                <li>1.7.1992: Beginn der Besetzung des FLZ</li>
+                <li>9.3.1993: Urteil der Räumungsklage</li>
+                <li>9.8.1993: Ausuzug aus der Düsteren Straße 21</li>
+              </ul>
+
+              <h4>Aktionen des FLZ</h4>
+              <ul>
+                <li>Plenum: Sonntag 19 Uhr</li>
+                <li>Organisationsgruppe: Dienstag 19 Uhr</li>
+                <li>Kultur- und Öffentlichkeits AG: Mittwoch 16 Uhr</li>
+                <li>Café/Kneipe: Montag 17-21 Uhr, Donnerstag ab 20 Uhr, Freitag ab 21 Uhr</li>
+                <li>Neuentreff: 1. Monatg im Monat 17-19 Uhr</li>
+                <li>Fete: 3. Samstag im Monat ab 21 Uhr</li>
+                <li>27.1.1989: Filmvorführung Komplizinnen</li>
+                <li>11.5.1989: Konzert der Band OVA</li>
+                <li>25.4.1990: Lesbenmonat</li>
+              </ul>
+
+              <h4>Probleme des FLZ</h4>
+              <ul>
+                <li>Oftmals Uneinigkeit der Frauen (Organisationsgruppe)</li>
+                <li>Geldmangel</li>
+                <li>Haus stark sanierungsbedürftig</li>
+                <li>Schutz des FLZ und der Frauen im FLZ</li>
+              </ul>
+            </div>
+            <div id="text-j">
+              <h3>Antirassistischer Aktivismus</h3>
+              <h4>Theoretische Grundsätze</h4>
+              <h5>Theorie der Merfachdiskrimierung</h5>
+              <ul>
+                <li>FLZ sieht nicht nur die Unterdrückungsachse des Geschlechts sondern auch die der Hautfarbe und Herkunft ⇒ Intersektionalität</li>
+                <li>Daraus ergibt sich geschlechtsspezifischer Blick auf Flucht woraus Forderung für ein Selbstständiges Aufenthaltsrecht für Frauen und die Anerkennung der sexuellen Verfolgung als Asylgrund entsteht</li>
+              </ul>
+              <h5>Dekoloniale Perspektive</h5>
+              <ul>
+                <li>
+                  Armut bestimmter Länder wird als Folge der Zerstörung traditioneller Produktionsweisen dieser Länder mit der Intention sie in ein wirtschaftliches Abhängigkeitsverhältnis mit westlichen Ländern zu bringen gesehen
+                </li>
+                <li>
+                  Exogene statt endogene "white savior" Entwicklungstheorie)
+                </li>
+              </ul>
+              <h4>Aktivismus</h4>
+              <ul>
+                <li>
+                  Demo gegen Ausländergesetz 30.04.1990
+                </li>
+                <li>
+                  Mahnwache gegen Gewalt an flüchtende Frauen 17.11.1991
+                </li>
+                <li>
+                  Wem gehört die Stadt? Flugblatt April 1993
+                </li>
+              </ul>
+              <h4>Beispiel Frau B.: von Ghana nach Göttingen</h4>
+              <ul>
+                <li>
+                  Frau B. ist seit einem Jahr in Deutschland, sie versucht seit mehreren Monaten die Papiere für eine Hochzeit mit Herrn B. zu besorgen was aber aufgrund der Bürokratie der Behörden der BRD scheitert
+                </li>
+                <li>
+                  Anfang Juni befindet sie sich eine Woche in Abschiebehaft und und wird nach Frankfurt zum Abschiebeflughafen transportiert. Durch Intervention ihres Anwaltes kann die geplante Abschiebung nach Ghana verhindert werden und Frau B. muss auf eigene Kosten nach Göttingen zurückkehren
+                </li>
+                <li>
+                  Kurze Zeit später stehen zwei Zivilpolizisten vor ihrer Zimmertür und fordern sie auf mitzukommen. Sie schließt die Tür ab und springt aus 3m Höhe aus dem Fenster, erleidet einen Arm- und Wirbelbruch und Zeugen verweigern es den Notarzt zu rufen
+                </li>
+                <li>
+                  Sie wurde sitzend im Dienstwagen der Polizei ins Krankenhaus transportiert. Auf Grund von schweren Verletzungen liegt sie 4 Wochen im Krankenhaus
+                </li>
+                <li>
+                  Am Ende kann die Hochzeit durch Hilfe des FLZ organisert werden und Frau B. kann in Deutschland bleiben
+                </li>
+              </ul>
+            </div>
+            <div id="text-c">
+              <h3>Frauen in der AGIL, Frauenzentrum, Frauenhaus</h3>
+              <h4>Frauen in der AGIL</h4>
+              <h5>1981</h5>
+              <ul>
+                <li>Im Dezember luden Frauen aus der AG-Alternative-Grüne-Initiativen-Liste zu einem Treffen für verschiedene Frauengruppen und einzelnen Frauen ein, um sich zu vernetzen. Weitere Themen waren ein möglicher Frauenausschuss für den Stadtradt, Reflektion über einen vergangenen Kunstmarkt, sowie die Herausgabe einer Ausgabe der Stadtzeitung über Frauenthemen.</li>
+              </ul>
+
+              <h4>Frauenzentrum</h4>
+              <h5>1986</h5>
+              <ul>
+                <li>1986 wurde das seit 13 Jahren bestehende Frauenzentrum (Kurze-Geismarstr.24) gekündigt, da die Innenstadt saniert und das Einkaufszentrum erweitert werden sollte. Das Frauenzentrum beherbergte vorher sehr viele politische Gruppen und eigentlich bestand eher der Wunsch nach einer Erweiterung des Zentrums</li>
+                <li>1986 im Juli 1986 wurde vor der Demonstration zum Erhalt des Frauenzentrums von der damaligen CDU Ratsfrau Veronika Frels ein Haus vorgeschlagen, das jedoch viel zu klein, zwangsgeräumt und unsaniert war – die Frauen des fz lehnten das Angebot ab.</li>
+              </ul>
+
+              <h5>1987</h5>
+              <ul>
+                <li>Laut der Aktivistinnen des Frauenzentrums hatte die Stadt keinerlei Interesse an einer Vernetzung von Frauen abseits von staatlich-kapitalistischen Sorge- und Mutterschaftsangeboten. Die Aktivistinnen wendeten sich gegen §218, sowie Gleichstellungsangeboten, die laut ihnen die Probleme des Patriachats nicht beseitigen würden.</li>
+                <li>Zugleich kritisieren die Aktivistinnen Verbote von linken Veranstaltungen, Demonstrationen sowie Razzien an linken Orten in ganz Deutschland, sowie Erweiterungen von §130 und §129a und reihen auch die Kämpfe um das Frauenzentrum in eine konservative Politik ein.</li>
+                <li>Die Sanierung der Innenstadt betrachten die Aktivistinnen als eine Erweiterung des Kapitalismus und der Gentrifizierung, welche eine Stadt so aufbaut, dass sie möglich viel Profit bringt. Da das Frauenzentrum das nicht tut und aktiv versucht sich dem entgegenzustellen, ist das Frauenzentrum nicht mit dieser Stadtpolitik vereinbar.</li>
+                <li>Nachdem am 1. Januar 1987 das vorherige Frauenzentrum geräumt und abgerissen wurde, wurde am 27. März 1987 wurde dann die Rosa Villa in der Bürgerstr. 12 besetzt. Das Gebäude gehörte der Baptistengemeinde, die keinen Anspruch auf das Gebäude erhob. Dadurch, dass es nicht der Stadt gehörte, musste diese auch nicht für Instandhaltung oder Denkmalschutz aufkommen. Die Aktivistinnen fordern die Stadt auf, das Haus zu kaufen oder zu mieten und ihnen Mietfrei als Frauenzentrum zur Verfügung zu stellen.</li>
+                <li>am 4. April 1987 wurde zu einer Demo am Wilhelmsplatz sowie einer Party im Juzi anlässlich der Besetzung der Rosa Villa mobilisiert.</li>
+              </ul>
+
+              <h4>Frauenhaus</h4>
+              <h5>Januar 1977</h5>
+              <ul>
+                <li>Frauenhaus-Initiative besteht seit ca 1975, als eingetragener Verein seit November 1977. Mitgliederinnen sind etwa 30 arbeitende Frauen, 1/3 berufstätig, 2/3 studieren. Die Frauen sind zwischen 20 und 40 Jahren alt.</li>
+                <li>drei Gruppen: Öffentlichkeitsgruppe, Haus- und Kindergruppe, eine Beratungsgruppe</li>
+              </ul>
+
+              <h5>1978</h5>
+              <ul>
+                <li>bisher leistete die Gruppe Beratungen und private Hilfe, die Forderung für ein Frauenhaus wurde im Stadtradt 1978 angenommen sowie 78000DM für Angestellte zur Verfügung gestellt.</li>
+                <li>Der Initiative wurden 3 Häuser angeboten, die alle zu dem Zeitpunkt bewohnt waren.</li>
+              </ul>
+
+              <h5>1979</h5>
+              <ul>
+                <li>Trotz großer Bedenken entschied sich die Gruppe letzendlich aufgrund keinem verfügbaren Leerstand eins der im Jahr 1978 angebotenen Häuser zu nehmen und die Mieter*innen umziehen zu lassen.</li>
+                <li>der Stadtradt bewilligte am 2. November 1979 Gelder in der Höhe von 370 000DM, um das Frauenhaus sanieren zu lassen.</li>
+                <li>Die Frauenhaus-Initiative legte Wert darauf, dass sich im Frauenhaus Frauen begegnen, nicht mehr so alleine sind und sich über Erfahrungen austauschen können. Die Konflikte im Haus sollten von den Frauen selbst geregelt werden – aber auch eine KIndererzieherin gab es zur Unterstützung, sowie rechtliche, soziale und persönliche Beratung.</li>
+              </ul>
+
+              <div class="forschungsfragen">
+                <h4>Forschungsfragen</h4>
+                <ul>
+                  <li>(Wie) führen konflikte zu solidaritäten? </li>
+                  <li>Lassen sich absicht und wirkung von solidaritäts- und abgrenzungsbekundung anhand von konflikten sozial-historisch deuten und vergegenwärtigen?</li>
+                  <li>Welche partiellen identifikitationskategorien können in den materialien gefunden werden?</li>
+                  <li>Oder: wie konstituieren sich partielle identifikationskategorein und differente subjekte?</li>
+                  <li>in welchem spannungsfeld von klasse, ethnie, geschlecht, parteilichkeit, institutionalität etc werden abgrenzungen und bündnisse sichtbar?</li>
+                </ul>
+              </div>
+            </div>
+            <div id="text-chronology">
+              <h3>Chronologie</h3>
+              <div id="chronology-table-container">
               </div>
             </div>
           </div>

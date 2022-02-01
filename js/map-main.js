@@ -5,24 +5,36 @@ function parseChronologyMd(dataMd, map) {
     maxYear: undefined,
     hideAll: () => {
       chronology.markers.forEach((e) => {
-        e.remove();
+        // e.remove();
+        chronology.markerCluster.removeLayer(e);
       });
     },
     display: (year) => {
       chronology.hideAll();
       if(chronology.list.has(year)) {
         chronology.list.get(year).forEach((e) => {
-          e.marker.addTo(map);
+          // e.marker.addTo(map);
+          chronology.markerCluster.addLayer(e.marker);
         });
       }
     },
     displayAll: () => {
       chronology.markers.forEach((e) => {
-        e.addTo(map);
+        // e.addTo(map);
+        chronology.markerCluster.addLayer(e);
       });
     },
-    markers: []
+    markers: [],
+    markerCluster: L.markerClusterGroup({showCoverageOnHover: false, maxClusterRadius: 40})
   };
+
+  let markerIcon = L.icon({
+    iconUrl: "marker.svg",
+    iconSize: [40,40],
+    iconAnchor: [20, 40],
+    popupAnchor: [15, -27],
+    tooltipAnchor: [15, -27]
+  });
 
   dataMd.split("\n").forEach((e) => {
     if(e === "") return;
@@ -30,7 +42,7 @@ function parseChronologyMd(dataMd, map) {
     const year = entryArr[1].replace(/\s/g, "");
     const coordinates = entryArr[6].replace(/\s/g, "").split(",");
     const entry = {
-      date: entryArr[2],
+      date: entryArr[2].trim(),
       title: entryArr[3],
       description: entryArr[4],
       source: entryArr[5],
@@ -38,7 +50,7 @@ function parseChronologyMd(dataMd, map) {
       categories: entryArr[7].replace(/\s/g, "").split(","),
       marker: undefined
     };
-    entry.marker = L.marker(coordinates).bindTooltip(entry.title + "<hr>" + entry.date).addTo(map);
+    entry.marker = L.marker(coordinates, {icon: markerIcon}).bindTooltip(entry.title + "<hr>" + entry.date);
     chronology.markers.push(entry.marker);
 
     // if year is not in map, add new array
@@ -56,7 +68,64 @@ function parseChronologyMd(dataMd, map) {
     chronology.list.get(year).push(entry);
   });
 
+  chronology.markers.forEach((e) => {
+    chronology.markerCluster.addLayer(e);
+  });
+  map.addLayer(chronology.markerCluster);
+
   return chronology;
+}
+
+function generateTableFromChronology(chronology) {
+  let table = document.createElement("table");
+  let header = table.createTHead();
+  let body = table.createTBody();
+
+  let headerRow = header.insertRow();
+  headerRow.insertCell().appendChild(document.createTextNode("Datum"));
+  headerRow.insertCell().appendChild(document.createTextNode("Eregnis"));
+  headerRow.insertCell().appendChild(document.createTextNode("Beschreibung"));
+  headerRow.insertCell().appendChild(document.createTextNode("Quelle"));
+
+  let regexDDMMYYYY = new RegExp("[0-9]+\.[0-9]+\.[0-9]{4}");
+  let regexTextYYYY = new RegExp("^[^0-9].*[0-9]{4}");
+
+  const chronologyArray = [];
+  chronology.list.forEach((val, key) => {
+    // Sort array by date , with non-standard dates sorted to the end
+    const yearArray = [...val].sort((a, b) => {
+      if(regexDDMMYYYY.test(a.date) && regexDDMMYYYY.test(b.date)) {
+        const aSplitDate = a.date.split(".");
+        const bSplitDate = b.date.split(".");
+        const aDate = new Date(aSplitDate[2] + "-" + aSplitDate[1] + "-" + aSplitDate[0]);
+        const bDate = new Date(bSplitDate[2] + "-" + bSplitDate[1] + "-" + bSplitDate[0]);
+        if(aDate > bDate) return 1;
+        if(aDate < bDate) return -1;
+        return 0;
+      }
+      if(regexTextYYYY.test(a.date)) return 1;
+      if(regexTextYYYY.test(b.date)) return 0;
+      if(regexDDMMYYYY.test(a.date)) return -1;
+      return 1;
+    });
+    // By using the year (key) as the array index for inserting, we
+    // automatically end up with an array sorted by year
+    chronologyArray[key] = yearArray;
+  });
+
+  chronologyArray.forEach((e) => {
+    e.forEach((e) => {
+      let row = body.insertRow();
+      row.insertCell().appendChild(document.createTextNode(e.date));
+      row.insertCell().appendChild(document.createTextNode(e.title));
+      row.insertCell().appendChild(document.createTextNode(e.description));
+      let src = document.createElement("code");
+      src.appendChild(document.createTextNode(e.source));
+      row.insertCell().appendChild(src);
+    });
+  });
+
+  return table;
 }
 
 function setupYearRangeControls(minYear, maxYear, chronology) {
@@ -143,8 +212,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // Constants
   const bubbleSize = {
-    "min": 10,
-    "max": 30,
+    "min": 15,
+    "max": 35,
     "cutoff": 10
   };
   const bubbleAttributes = {
@@ -165,8 +234,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
   let chronology = parseChronologyMd(chronologyMd, map);
+  let table = generateTableFromChronology(chronology);
+  document.getElementById("chronology-table-container").appendChild(table);
 
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);
+
   let hideMapButton = document.getElementById("hideMap");
   hideMapButton.addEventListener("click", function() {
     let mapContainer = document.getElementsByClassName("map-container")[0];
@@ -180,8 +252,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
 
   generateBubblesFromCSV(
-    [mentions_flz, mentions_autonomesReferatP2,
-    mentions_agilWalpFidl, mentions_c],
+    [mentions_flz, mentions_autonomesReferatP1, mentions_autonomesReferatP2,
+    mentions_agilWalpFidl, mentions_c, mentions_j],
     map, bubbleSize, bubbleAttributes);
 
 
@@ -221,7 +293,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     data: stupaData,
     options: {
       rotation: -90,
-      circumference: 180
+      circumference: 180,
+      plugins: {
+        legend: {
+          onClick: null
+        }
+      }
     }
   }
   const stupaPieChart = new Chart(
