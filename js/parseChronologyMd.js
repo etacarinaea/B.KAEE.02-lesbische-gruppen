@@ -43,14 +43,25 @@ function parseChronologyMd(dataMd, map) {
     const coordinates = entryArr[6].replace(/\s/g, "").split(",");
     const entry = {
       date: entryArr[2].trim(),
-      title: entryArr[3],
-      description: entryArr[4],
-      source: entryArr[5],
+      title: entryArr[3].trim(),
+      description: entryArr[4].trim(),
+      source: entryArr[5].trim(),
       coordinates: coordinates,
       categories: entryArr[7].replace(/\s/g, "").split(","),
+      id: undefined,
       marker: undefined
     };
+    entry.id = year + "-" + entry.title.replace(/\s/g, "-") + "-" + coordinates.join("-");
     entry.marker = L.marker(coordinates, {icon: markerIcon}).bindTooltip(entry.title + "<hr>" + entry.date);
+    entry.marker.on("click", (e) => {
+      let row = document.getElementById(entry.id);
+      row.scrollIntoView({block: "center"});
+      let focusedRows = document.getElementsByClassName("focused-row");
+      [...focusedRows].forEach((e) => {
+        e.classList.remove("focused-row");
+      });
+      row.classList.add("focused-row");
+    });
     chronology.markers.push(entry.marker);
 
     // if year is not in map, add new array

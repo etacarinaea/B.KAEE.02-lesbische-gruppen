@@ -38,6 +38,7 @@ function generateTableFromChronology(chronology) {
   chronologyArray.forEach((e) => {
     e.forEach((e) => {
       let row = body.insertRow();
+      row.id = e.id;
       row.insertCell().appendChild(document.createTextNode(e.date));
       row.insertCell().appendChild(document.createTextNode(e.title));
       row.insertCell().appendChild(document.createTextNode(e.description));

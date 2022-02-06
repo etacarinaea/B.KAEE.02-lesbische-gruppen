@@ -251,6 +251,10 @@ td:first-child {
   background: #e0e0e0;
 }
 
+.focused-row td:first-child {
+  border-left: 10px solid #ff9b55;
+}
+
 @media(min-width:600px) {
   .content-container {
     flex-direction: row;
