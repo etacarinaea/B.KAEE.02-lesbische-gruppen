@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
   let chronology = parseChronologyMd(chronologyMd, map);
-  let table = generateTableFromChronology(chronology);
+  let table = generateTableFromChronology(chronology, map);
   document.getElementById("chronology-table-container").appendChild(table);
 
   setupYearRangeControls(chronology.minYear, chronology.maxYear, chronology);

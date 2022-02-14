@@ -60,7 +60,7 @@ function parseChronologyMd(dataMd, map) {
       [...focusedRows].forEach((e) => {
         e.classList.remove("focused-row");
       });
-      row.classList.add("focused-row");
+      row.firstElementChild.classList.add("focused-row");
     });
     chronology.markers.push(entry.marker);
 

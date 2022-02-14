@@ -1,11 +1,12 @@
-function generateTableFromChronology(chronology) {
+function generateTableFromChronology(chronology, map) {
   let table = document.createElement("table");
   let header = table.createTHead();
   let body = table.createTBody();
 
   let headerRow = header.insertRow();
+  headerRow.insertCell();
   headerRow.insertCell().appendChild(document.createTextNode("Datum"));
-  headerRow.insertCell().appendChild(document.createTextNode("Eregnis"));
+  headerRow.insertCell().appendChild(document.createTextNode("Ereignis"));
   headerRow.insertCell().appendChild(document.createTextNode("Beschreibung"));
   headerRow.insertCell().appendChild(document.createTextNode("Quelle"));
 
@@ -39,12 +40,22 @@ function generateTableFromChronology(chronology) {
     e.forEach((e) => {
       let row = body.insertRow();
       row.id = e.id;
+      let toMap = row.insertCell();
+      toMap.appendChild(document.createTextNode("🗺"))
       row.insertCell().appendChild(document.createTextNode(e.date));
       row.insertCell().appendChild(document.createTextNode(e.title));
       row.insertCell().appendChild(document.createTextNode(e.description));
       let src = document.createElement("code");
       src.appendChild(document.createTextNode(e.source));
       row.insertCell().appendChild(src);
+      toMap.addEventListener("click", (e2) => {
+        map.setView(e.marker._latlng, 20);
+        let focusedRows = document.getElementsByClassName("focused-row");
+        [...focusedRows].forEach((e) => {
+          e.classList.remove("focused-row");
+        });
+        e2.target.classList.add("focused-row");
+      });
     });
   });
 
