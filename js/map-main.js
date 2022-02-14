@@ -67,10 +67,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       label: "StuPa 1987 Sitzverteilung",
       data: [7, 12, 5, 1, 7, 1, 12, 12, 1],
       backgroundColor: [
-        "#8a000a",
+        "#aa2224",
         "#3e9b39",
-        "#8a000a",
-        "#8a000a",
+        "#9a000a",
+        "#b8003a",
         "#e30013",
         "#ffed00",
         "#ffed00",
