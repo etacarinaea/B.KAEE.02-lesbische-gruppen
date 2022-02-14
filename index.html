@@ -25,7 +25,12 @@
     <script src="data/mentions/c.js"></script>
     <script src="data/mentions/j.js"></script>
     <script src="data/chronology.js"></script>
+    <script src="js/parseChronologyMd.js"></script>
+    <script src="js/generateTableFromChronology.js"></script>
+    <script src="js/generateBubblesFromCSV.js"></script>
+    <script src="js/setupYearRangeControls.js"></script>
     <script src="js/map-main.js"></script>
+
   </head>
   <body>
     <div class="container">
@@ -55,15 +60,21 @@
                 Anzahl der Erwähnungen an (cutoff bei 10 Erwähnungen).
               </p>
               <p>
+                Die Karte lässt sich vergrössern und verkleinern, es sind
+                mehrere Orte und Ereignisse auch ausserhalb von Göttingen
+                eingetragen.
+              </p>
+              <p>
                 Die Markierungen zeigen Ereignisse aus der
                 <a href="#text-chronology">Chronologie</a>. Mit dem Slider
                 unter der Karte kann ein Jahr ausgewählt werden für das die
                 Ereignisse angezeigt werden sollen.
               </p>
               <p>
-                Die Karte lässt sich vergrössern und verkleinern, es sind
-                mehrere Orte und Ereignisse auch ausserhalb von Göttingen
-                eingetragen.
+                Klickt man auf eine Markierung, wird zu dem dazugehörigen
+                Eintrag in der Chronologie gescrollt. Ebenso wird bei einem
+                Klick auf die linke Spalte der Chronologie das dazugehörige
+                Ereignis auf der Karte angezeigt.
               </p>
 
               <p>
@@ -173,288 +184,293 @@
               </div>
             </div>
             <div id="text-autonomes-referat-p2">
-              <h3>Autonomes Frauen-/Lesbenreferat &mdash; Teil 2</h3>
-              <h4>Kritik am RCDS, und anderen rechten Gruppen</h4>
-              <ul>
-                <li>Der RCDS und andere rechte Gruppen haben sich oft
-                  frauenfeindlich geäußert, wofür sie vom AStA und
-                  vom autonomen Frauenreferat kritisiert wurden</li>
-                <li>Der RCDS hat sich oft gegen das allgemeinpolitische Mandat
-                ausgsprochen (siehe Anmerkungen für Erklärung des
-                allgemeinpolitischen Mandats)</li>
-              </ul>
-              <h4>Kritik an der GAL, den Jusos, und anderen linken Gruppen</h4>
-              <ul>
-                <li>Das autonome Frauenreferat kritisiert die GAL dafür,
-                  dass ihr "grüne" Theme wichtiger seien als das autonome
-                  Frauenreferat ("Naturkost" in der Mensa sei ihr wichtiger als
-                  Feminismus)</li>
-              </ul>
-              <ul>
-                <li>Die Juso-HSG und die Jusos allgemein werden dafür
-                  kritisiert, nicht genug fuer die Frauenbewegung getan zu
-                  haben</li>
-                <li>Insbesondere wird die Juso-HSG wegen den Konflikten mit der
-                  GAL und die daraus resultierenden Probleme im StuPa
-                  kritisiert</li>
-              </ul>
-              <ul>
-                <li>Linke Männer werden wegen ihrem Umgang mit Frauen und
-                  der Frauenbewegung kritisiert</li>
-              </ul>
-              <h4>Kritik am autonomen Frauenreferat</h4>
-              <ul>
-                <li>Auf mehreren Vollversammlungen wird das Kollektiv/die
-                  Referentin, die das autonome Referat leiten, für ihre
-                  Arbeitsweisen kritisiert</li>
-                <li>Als Antwort darauf veröffentlicht das Kollektiv
-                  ein Selbstverständnis und geht auf die Kritik in Flugblättern
-                  ein</li>
-              </ul>
-              <h4>1986 &mdash; AStA tritt zurück</h4>
-              <ul>
-                <li>Der AStA tritt aufgrund von "politischer Kontroversen"
-                zurück</li>
-                <li>Wahrscheinlich war damit der Konflikt zwischen
-                GAL und Juso-HSG gemeint</li>
-                <li>Der AStA bestand aus:
-                  <ul>
-                    <li>Juso-HSG (Vorstand, Kulturreferat)</li>
-                    <li>LiA (Finanzen, Außenreferat)</li>
-                    <li>MSB (Sozialreferat)</li>
-                    <li>GAL (Hochschulreferat)</li>
-                  </ul>
-                </li>
-                <li>Es wurde durch den Rücktritt und den Konflikt zwischen GAL
-                  und Jusos kein Haushalt beschlossen, was die existenz der
-                  autonomen Referate bedroht</li>
-                <li>Es wird gefordert einen Rumpfhaushalt zu beschließen</li>
-              </ul>
-              <h4>1987 &mdash; Studentische Selbsverwaltung zerfällt</h4>
-              <ul>
-                <li>Situation im Studierendenparlament Ende 1987:
-                  <ul>
-                    <li>Eine rechte Koalition war nicht möglich</li>
-                    <li>
-                      Eine linke Koalition wäre nur mit GAL und Juso-HSG
-                      Unterstützung möglich gewesen
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  GAL und Juso-HSG waren zestritten, wollten daher nicht
-                  gemeinsam einen AStA stellen
-                </li>
-                <li>
-                  Ein "LB/MSB-Minderheiten-AStA" war eine Idee, die aber nicht
-                  funktionierte (keine genaueren Gründe angegeben). GAL und
-                  Juso-HSG hätten diese Minderheitsregierung unterstützt
-                </li>
-              </ul>
+<h3>Autonomes Frauen-/Lesbenreferat — Teil 2</h3>
+<h4>Konflikte mit rechten Hochschulgruppen</h4>
+<p>
+  Der "Ring Christlich-Demokratischer Studenten"<sup>[sic]</sup> (RCDS,
+  CDU nah) kam immer wieder in Konflikt mit linken AStAs und dem autonomen
+  Frauenreferat. Oft äusserte er sich sehr frauenfeindlich und homophob, oder
+  kritisierte das "allgemeinpolitische Mandat."
+</p>
+<p>
+  Insbesondere war eine Forderung des RCDS, die autonomen Referate
+  abzuschaffen.
+  Die autonomen Referate zitieren in einem ihrer Flugblätter zum Beispiel aus
+  einer Wahlzeitung des RCDS von 1989:
+  "Man sollte endlich aufhören, diese Gelder zur Förderung blumiger
+  allgemeinpolitischer Referate ... zu verschwenden."<sup>1</sup>
+</p>
+<p>
+  Hier wird erneut deutlich, dass der RCDS das "allgemeinpolitische Mandat"
+  stark kritisiert. Für die Rechte einer bestimmten Studierendengruppe (in dem
+  Falle Frauen, Lesben und Schwule) einzutreten ist zwar auch
+  allgemeinpolitisch, hat aber ebenfalls einen direkten Bezug zur Hochschule,
+  da diese Personengruppen an der Hochschule studieren können sollten. Dafür
+  ist nicht diskrimiert zu werden, sei es durch Insitutitionen oder durch
+  Komillitonen, eine Vorraussetztung.  Hochschulpolitik und Allgemeinpolitik
+  lassen sich also nicht so leicht trennen.
+</p>
 
-              <div class="chart-container-center">
-                <div class="chart-title">
-                  Sitzverteilung im Studierendenparlament 1987 (58 Sitze)
-                </div>
-                <canvas id="stupaPieChart"></canvas>
-                <div class="chart-source">
-                  Quelle: Gabler, Andrea. "Sturm im Elfenbeinturm: Positionen und Aktionsformen des Gottinger AStA zu Wissenschafsbetrieb und politischem Mandat von 1967 bis 1987". S.176
-                </div>
-              </div>
-              <!-- <table>
-                <tr><th>Liste</th><th>Sitze</th>
-                <tr><td>DUG</td><td>1</td>
-                <tr><td>RCDS</td><td>12</td>
-                <tr><td>UFO</td><td>12</td>
-                <tr><td>RUFUS</td><td>1</td>
-                <tr><td>Juso-HSG</td><td>7</td>
-                <tr><td>SHB</td><td>1</td>
-                <tr><td>Wehrt Euch!</td><td>5</td>
-                <tr><td>GAL</td><td>12</td>
-                <tr><td>LB</td><td>7</td>
-                </tr>
-              </table> -->
-              <ul>
-                <li>
-                  Es wurde kein Nachtragshaushalt beschlossen, da die Juso-HSG
-                  sich weigerte dafür zu stimmen (wahrscheinlich auch wegen dem
-                  Konflikt mit der GAL)
-                </li>
-                <li>
-                  Dadurch konnten die autonomen Referate nicht in der Form
-                  weiter existieren, da sie nicht in der Satzung stehen,
-                  sondern nur im Haushaltsplan erwähnt waren
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  Am Ende kam kein AStA zustande
-                </li>
-                <li>
-                  Dadurch wurde die studentische Selbstverwaltung durch einen
-                  Staatskommissar (gestellt von der niedersächsischen
-                  Landesregierung (zu der Zeit CDU)) übernommen
-                </li>
-              </ul>
-              <h4>Und dann?</h4>
-              <ul>
-                <li>
-                  Lücke in den Quellen des autonome Referats für 1988,
-                  sehr wahrscheinlich weil es nicht existierte, da der
-                  Staatskommissar die Verwaltung für dieses Jahr übernahm
-                </li>
-                <li>
-                  In 1989 wieder ein Flugblatt, aber dieses Mal vom
-                  <strong>autonomen Frauen/Lesbenreferat</strong> (vorher nur
-                  autonomes Frauenreferat) und autonomen Schwulenreferat
-                  zusammen
-                </li>
-                <li>
-                  Flugblatt ruft zu den Hochschulwahlen auf, bitten linke
-                  Gruppen zu wählen, damit eine linke Mehrheit im StuPa
-                  zustande kommt und für den Fortbestand der autonomen Referate
-                  sorgt
-                </li>
-                <li>
-                  RCDS und Jusos werden in diesem Flugblatt kritisiert. RCDS
-                  wegen Frauenfeindlichkeit, und Jusos wegen der Situation 1986
-                  und 1987 und ihr geringes Engagement für die Frauenbewegung
-                </li>
-                <li>
-                  Es wird implizit GAL und NLB (neu in 1989) zur Wahl empfohlen
-                </li>
-              </ul>
-              <div class="forschungsfragen">
-                <h4>Forschungsfragen</h4>
-                <ul>
-                  <li>
-                    Was waren die Dynamiken zwischen und in den Hoschulgruppen?
-                    Was waren Konflikte zwischen links und rechts, und welche
-                    Konflikte gab es unter oder innerhalb der linken HSGs?
-                  </li>
-                  <li>
-                    Was war die Einstellung des autonomen Frauenreferats
-                    gegenüber trans Menschen, insbesondere trans Frauen? Waren
-                    trans Menschen in dem Begriff "Frau" oder "Lesbe" enthalten,
-                    und wenn ja, auf welche Weise?
-                  </li>
-                  <li>
-                    Was passierte während der Zeit in der der Staatskommissar
-                    die Verwaltung übernahm? Welche langfristigen Folgen hatte
-                    das auf die studentische Selbstverwaltung (u.a. auch die
-                    Wahlbeteiligung und die Sitzverteilung im StuPa). Wie
-                    wirkte sich das auf die Meinung der Universität und der
-                    Kommunal- und Landespolitik auf die studentische
-                    Selbstverwaltung in Göttingen aus?
-                  </li>
-                  <li>
-                    Was führte zu der endgültigen Abschaffung der autonomen
-                    Referate? Hatte es Einfluss darauf, dass in den
-                    vergangenen Jahren Studierendenparlamente mit linken
-                    Mehrheiten autonome Referate in Göttingen nicht wieder
-                    eingeführt haben?
-                  </li>
-                </ul>
-              </div>
+<h5>Allgemeinpolitisches und Hochschulpolitisches Mandat</h5>
+<p>
+  Verfasste Studierendenschaften (zumindest in Niedersachsen, in manchen
+  Bundesländern existieren auch andere Regelungen) sind Körperschaften des
+  öffentlichen Rechts mit Pflichtmitgliedschaft, die der jeweiligen Hochschule
+  untergeordnet sind.
+</p>
+<p>
+  Durch die Pflichtmitgliedschaft sind solche Körperschaften gesetzlich dazu
+  verpflichtet, sich nur in Bezug ihres Aufgabenfeldes zu äussern. Für die
+  Verfasste Studierendenschaft (und damit auch den AStA) heißt das, dass sie
+  sich nur mit Bezug zur Hochschule äussern darf (Hochschulpolitisches Mandat).
+</p>
+<p>
+  Die Kontroverse um das Allgemein/Hochschulpolitische Mandat besteht darin,
+  dass man viele Themen so auslegen kann, dass sie Hochschulbezug haben, auch
+  wenn ein direkter Hochschulbezug nicht direkt erkennbar ist.  So könnte
+  man zum Beispiel auch "Klimaschutz" als hochschulrelevantes Thema darstellen,
+  in dem man erklärt, dass "die Hochschule auch zum Klimaschutz verpflichtet
+  ist und Klimaschutz daher auch die Hochschule und die Studierendenschaft
+  betrifft".
+</p>
+<p>
+  Der RCDS kritisiert diese "Umgehung" des Gesetzes, auch heutzutage noch,
+  während linke Gruppen sich für eine Abschaffung dieses Gesetzes aussprechen,
+  da eine wirkliche Trennung von Hochschul- und Allgemeinpolitik gar nicht
+  möglich ist. Wie bereits erwähnt führt genau das auch zu der Kritik des RCDS
+  an dem autonomen Frauenreferat, da der RCDS Feminismus für etwas
+  "allgemeinpolitisches" hält, dass keinen direkten Bezug zur Hochschule hat.
+</p>
 
-              <div class="collapsible-container">
-                <button type="button" class="collapsible-button">
-                  <h3>Anmerkungen</h3>
-                </button>
-                <div class="collapsible-content">
-                  <h4>Abkürzungen</h4>
-                  <table>
-                    <tr><td>AStA</td><td>Allgemeiner Studierendenausschuss</td></tr>
-                    <tr><td>StuPa</td><td>Studierendenparlament</td></tr>
-                    <tr><td>HSG</td><td>Hochschulgruppe</td></tr>
-                    <tr><td>RCDS</td><td>Ring Christlich Demokratischer Studenten</td></tr>
-                    <tr><td>Jusos</td><td>Jungsozialisten in der SPD</td></tr>
-                    <tr><td>GAL</td><td>Grün Alternative Liste</td></tr>
-                    <tr><td>LiA</td><td>Linke Alternative</td></tr>
-                    <tr><td>MSB</td><td>Marxistischer Studentenbund</td></tr>
-                    <tr><td>LB</td><td>Linkes Bündnis</td></tr>
-                  </table>
-                  <h4>Allgemeinpolitisches und Hochschulpolitisches Mandat</h4>
-                  <p>
-                    Verfasste Studierendenschaften (zumindest in Niedersachsen,
-                    in manchen Bundesländern existieren auch andere Regelungen)
-                    sind Körperschaften des öffentlichen Rechts mit
-                    Pflichtmitgliedschaft, die der jeweiligen Hochschule
-                    untergeordnet sind.
-                  </p>
-                  <p>
-                    Durch die Pflichtmitgliedschaft sind solche Körperschaften
-                    gesetzlich dazu verpflichtet, sich nur in Bezug ihres
-                    Aufgabenfeldes zu äussern.
-                  </p>
-                  <p>
-                    Für die Verfasste Studierendenschaft (und damit auch den
-                    AStA) heißt das, dass sie sich nur mit Bezug zur
-                    Hochschule äussern darf (Hochschulpolitisches Mandat).
-                  </p>
-                  <p>
-                    Die Kontroverse um das Allgemein/Hochschulpolitische Mandat
-                    besteht darin, dass man viele Themen so auslegen kann, dass
-                    sie Hochschulbezug haben, auch wenn sie nur sehr wenig mit
-                    der Hochschule direkt zu tun haben.
-                  </p>
-                  <p>
-                    So könnte man zum Beispiel "Klimaschutz" als
-                    hochschulrelevantes Thema darstellen, in dem man
-                    erklärt, dass "Klimaschutz uns alle betrifft und damit auch
-                    die Hochschule und die Studierendenschaft".
-                  </p>
-                  <p>
-                    Der RCDS kritisiert diese "Umgehung" des Gesetzes, auch
-                    heutzutage noch, während linke Gruppen sich für eine
-                    Abschaffung dieses Gesetzes aussprechen, da eine wirkliche
-                    Trennung von Hochschul- und Allgemeinpolitik gar nicht
-                    möglich ist.
-                  </p>
+<h5>Frauenfeindliche und homophobe Äusserungen</h5>
+<p>
+  Der RCDS verwendete zum Beispiel abwertende Wörter wie "Emanze" und ein
+  Wahlkampfflyer der "Blauen" Hochschulgruppe zeigte eine nackte Frau zusammen
+  mit dem Spruch "Für einen blauen tu ich alles".
+</p>
+<p>
+  Zum Teil könnten einige Aussagen des RCDS und andere rechter Gruppen
+  auch als lesbophob oder transphob gedeutet werden, obwohl transphobe
+  Äusserungen des RCDS wahrscheinlich eher ein Nebenprodukt der
+  Frauenfeindlichkeit und damit einhergehender cis-hetero-normativen
+  Vorstellungen des RCDS waren, als Angriffe die direkt gegen trans Personen
+  gerichtet waren.<sup>2,3</sup>
+</p>
 
-                  <h4>"Hochschulgruppen"</h4>
-                  <p>
-                    Mit Hochschulgruppen sind nicht immer eingetragene
-                    Hochschulgruppen (Vereine) gemeint, sondern auch loosere
-                    Gruppen, die zusammen eine Vorschlagsliste zu den StuPa
-                    Wahlen eingereicht hatten (z.B. war das der Fall bei der
-                    GAL, vergleichbar mit der Alternativen Linken Liste (ALL)
-                    heutzutage, die u.a. aus mehreren Basisgruppen besteht).
-                  </p>
-                  <p>
-                    Dabei ist auch zu beachten, dass die Juso-HSG und die
-                    Jusos nicht unbedingt das gleiche sind, auch wenn sie sich
-                    sehr wahrscheinlich stark überschneiden. Genauso sind
-                    Mitglieder der Grünen Hochschulgruppe oder GAL nicht
-                    unbedingt Mitglieder der Grünen, oder stehen den Grünen.
-                  </p>
+<h4>Konflikte mit, und innerhalb, linken Hochschulgruppen</h4>
+<p>
+  Die GAL forderte zwischenzeitlich die Abschaffung autonomen Referate, was
+  von dem autonomen Frauenreferat stark kritisiert wurde.<sup>4</sup> Zudem
+  wurde auch das sexistische Verhalten von Männern in linken Gruppen kritisiert
+  und dass dadurch Frauen in den etablierten linken Gruppen oft nicht so viel
+  Beteiligung haben konnten.
+</p>
+<p>
+  Auch zwischen den linken Hochschulgruppen gab es Konflikte. So zerstritten sich
+  zum Beispiel die GAL und die Juso-HSG, was zu großen Problemen im
+  Studierendenparlament und AStA führte, da diese Gruppen meist die stärksten
+  linken Fraktionen bildeten.
+</p>
 
-                  <h4>Anmerkungen zu 1987</h4>
-                  <p>
-                    MSB und SHB arbeiteten laut Gabler eng zusammen. In
-                    "1987-11 autonome Referate Ende.pdf" wird von einem
-                    "LB/MSB-Minderheiten-AStA" gesprochen. Vielleicht ist also
-                    die SHB gemeint, obwohl "Wehrt Euch!" auch eine linke Liste
-                    sein könnte, in der die MSB enthalten ist.
-                  </p>
-                  <p>
-                    "Wehr Euch!" muss eine linke Liste sein, da die anderen
-                    Listen definitiv rechts sind, und es sonst die ganze
-                    Diskussion um einen linken AStA gar nicht erst gegeben
-                    haette, weil gar keine linke Mehrheit im StuPa vorhanden
-                    gewesen wäre.
-                  </p>
-                  <p>
-                    <strong>Mögliche linke Koalitionen:</strong>
-                    Es wurden 30 Sitze für eine Mehrheit benötigt.
-                    <ul>
-                      <li>32 Sitze: LB (7) &amp; SHB (1) Minderheits-AStA, unterstützt durch GAL (12), Juso-HSG (7) und "Wehrt Euch!" (5)</li>
-                      <li>31 Sitze: LB (7) &amp; "Wehrt Euch!" (5) Minderheits-AStA, untersteutzt durch GAL (12) und Juso-HSG (7)</li>
-                      <li>31 Sitze: GAL (12), Juso-HSG (7), LB (7), "Wehrt Euch!" (5)</li>
-                    <ul>
-                  </p>
-                </div>
-              </div>
+<h4>Autonome Frauenbewegung</h4>
+<p>
+  Das autonome Frauenreferat war besorgt um die Schließungen des Frauenzentrums
+  und des Frauenbuchladens in der Burgstraße.<sup>5</sup> Ab und zu wurden
+  Veranstaltungen organisiert um über die Situation der Frauenbewegung in
+  Göttingen und der BRD zu sprechen.
+</p>
+
+
+<h4>1986 — AStA tritt zurück</h4>
+<p>
+  Anfang/Mitte 1986 tritt der amtierende AStA der Uni Göttingen zurück, laut
+  einem Flugblatt des autonomen Frauenreferats
+  "aufgrund politischer Kontroversen".<sup>6</sup>
+</p>
+
+<p>
+  Zuvor wurde 1985 ein Verfahren vor dem Verwaltungsgericht Braunschweig vom
+  RCDS gegen den AStA eingeleitet, und eine anonyme Anzeige führte zu der
+  Durchsuchung des Finanzreferats und zur Beschlagnahme aller Akten des
+  entsprechenden Haushaltsjahres.<sup>7(S.134-136)</sup> Möglicherweise haben
+  diese Ereignisse zum Rücktritt des AStAs in 1986 geführt.
+</p>
+
+<h5>Struktur des AStAs und der autonomen Referate</h5>
+<p>
+  Der AStA besteht nach der Organisationssatzung der Studierendenschaft aus
+  bestimmten Referaten ("Pflichtreferate"), wobei die Möglichkeit besteht
+  weitere Referate durch das Studierendenparlament zu beschliessen
+  ("Zusatzreferate").
+</p>
+<p>
+  Die Existenz von Zusatzreferaten ist also abhängig von den Mehrheiten im
+  Studierendenparlament. Autonome Referate waren in der Satzung nicht
+  enthalten, und hatten daher effektiv ihre Existenzberechtigung nur durch
+  einen Eintrag im Haushaltsplan der Studierendenschaft (der ebenfalls von den
+  Verhältnissen im StuPa abhängig ist).
+</p>
+<p>
+  Der Grund die autonomen Referate nicht in die Satzung zu schreiben lag sehr
+  wahrscheinlich darin, dass die Referent*innen von Vollversammlungen der
+  entsprechenden Studierendengruppen gewählt werden sollten, damit sie eine
+  direkte Vertretung dieser sein konnten. Wären es Referate im Sinne der
+  Satzung gewesen, hätte das Studierendenparlament die Referent*innen wählen
+  müssen, was im Widerspruch zur Autonomie gestanden hätte.
+</p>
+
+<h5>Kein Haushaltsplan, keine autonomen Referate</h5>
+<p>
+  Auf der Sitzung des Studierendenparlaments 1986, auf der der AStA zurücktrat,
+  wurde unter anderem auch kein Haushalt verabschiedet.  Die Gruppen und
+  Menschen, die sich in den autonomen Referaten engagierten, konnten sich zwar
+  theoretisch noch treffen, hatten aber keine Finanzen mehr zur Verfügung, und
+  konnten so zum Beispiel keine Flugblätter drucken, um zu einer
+  Vollversammlung einzuladen, oder die Studierenden zu informieren.
+</p>
+<p>
+  Das autonome Frauenreferat forderte einen Rumpfhaushalt zu beschliessen. Ob
+  ein neuer Haushalt beschlossen wurde ist aus den Quellen unklar. Circa drei
+  Wochen später, am 30.6.1986 gab es zwar noch Mal einen Flyer, der aber
+  vielleicht noch vor Ende des bestehenden Haushaltsjahres gedruckt werden
+  konnte. Die nächste vorhandene Quelle wurde erst im Sommersemester 1987
+  veröffentlicht.
+</p>
+
+
+<h4>1987 — Studentische Selbsverwaltung zerfällt</h4>
+<p>
+  Durch die Sitzverteilung im Studierendenparlament 1987 war eine rechte
+  Koalition im Prinzip ausgeschlossen. Die linken Gruppen hatten zwar zusammen
+  die Mehrheit im StuPa, durch den Streit zwischer der GAL und der Juso-HSG war
+  eine linke Koalition jedoch schwierig, da sie auf die Unterstützung beider
+  Fraktionen angewiesen gewesen wäre.
+</p>
+
+
+<div class="chart-container-center">
+  <div class="chart-title">
+    Sitzverteilung im Studierendenparlament 1987<sup>7(S.176)</sup> (58 Sitze)
+  </div>
+  <canvas id="stupaPieChart"></canvas>
+</div>
+<!-- <table>
+  <tr><th>Liste</th><th>Sitze</th>
+  <tr><td>DUG</td><td>1</td>
+  <tr><td>RCDS</td><td>12</td>
+  <tr><td>UFO</td><td>12</td>
+  <tr><td>RUFUS</td><td>1</td>
+  <tr><td>Juso-HSG</td><td>7</td>
+  <tr><td>SHB</td><td>1</td>
+  <tr><td>Wehrt Euch!</td><td>5</td>
+  <tr><td>GAL</td><td>12</td>
+  <tr><td>LB</td><td>7</td>
+  </tr>
+</table> -->
+
+
+<p>
+  GAL und Jusos weigerten sich gemeinsam im AStA zu arbeiten. Es wurde ein
+  "LB/MSB-Minderheiten-AStA" (Minderheitsregierung) vorgeschlagen, den GAL und
+  Juso-HSG unterstützt hätten, der aber aus nicht genauer angegeben Gründen
+  nicht funktionierte.<sup>8</sup> Hierbei ist mit "MSB" entweder der "SHB"
+  gemeint, der laut Gabler eng mit dem "MSB"
+  zusammenarbeitete,<sup>7(S.168)</sup> oder "Wehr Euch!", da es gut sein kann,
+  dass die Liste/Fraktion im StuPa anders benannt war als die Gruppe selber.
+</p>
+<p>
+  Die Juso-HSG weigerte sich für den vorgeschlagenen Nachtragshaushalt zu
+  stimmen, wahrscheinlich wegen dem Streit mit der GAL, was dazu führte, dass
+  kein Nachtragshaushalt beschlossen werden konnte. Wie bereits beschrieben,
+  hätte dies dazu geführt, dass die autonomen Referate nicht hätten
+  weiterarbeiten können.
+</p>
+<p>
+  Durch den Konflikt zwischen GAL und Juso-HSG wurde kein neuer AStA gewählt,
+  was zur Folge hatte, dass ein Staatskomissar, gestellt von der
+  niedersächsischen Landesregierung (zu der Zeit CDU), die studentische
+  Selbstverwaltung für diese Legislaturperiode übernahm.<sup>1</sup> Für die
+  Legislaturperiode 1987/88 bedeutete das erstmal das Ende der autonomen
+  Referate, und daher sind für 1988 auch keine Quellen vorhanden.
+</p>
+<h4>Zeit nach dem Staatskomissar 1987/88</h4>
+<p>
+  Im Jahr 1989 erschien ein gemeinsamer Flyer des autonomen
+  Frauen/Lesbenreferats und autonomen Schwulenreferats in dem sie zu den
+  Hochschulwahlen aufriefen.<sup>1</sup> Daraus lässt sich schliessen, dass der
+  für die Legislaturperiode 1988/89 gewählte AStA die autonomen Referate wieder
+  eingeführt hatte.
+</p>
+<p>
+  In diesem Flyer wurde das erste Mal vom <strong>autonomen
+  Frauen/Lesbenreferat</strong> (vorher nur autonomes Frauenreferat)
+  gesprochen.  Die GAL und NLB wurden von den autonomen Referaten zur Wahl
+  empfohlen. Die Juso-HSG wurde stark kritisert und für die Einsetzung des
+  Staatskomissar 1987/88 verantwortlich gemacht. Auch im Dezember 1988 hatte
+  die Juso-HSG wieder gegen einen Nachtragshaushalt gestimmt, wofür sie erneut
+  kritisert wurden.
+</p>
+<p>
+  Die Quellen enden 1989, ob und wie lange es autonome Referate danach noch gab
+  ist unklar. In 2018-2022 gibt es autonome Referate in Göttingen jedenfalls
+  nicht mehr. Dafür haben linke AStAs heutzutage üblicherweise ein "Gender
+  &amp; Diversity" Referat (Zusatzreferat), dass ähnliche Aufgaben wie das
+  autonomen Frauen/Lesbenreferat übernimmt, aber nicht autonom ist.
+</p>
+
+
+
+
+
+
+
+<div class="forschungsfragen">
+  <h4>Forschungsfragen</h4>
+  <ul>
+    <li>
+      Was waren die Dynamiken zwischen und in den Hoschulgruppen?  Was waren
+      Konflikte zwischen links und rechts, und welche Konflikte gab es unter
+      oder innerhalb der linken HSGs?
+    </li>
+    <li>
+      Wie war die Einstellung des autonomen Frauenreferats gegenüber trans
+      Menschen, insbesondere trans Frauen? Waren trans Menschen in dem Begriff
+      "Frau" oder "Lesbe" enthalten, und wenn ja, auf welche Weise?
+    </li>
+    <li>
+      Wie wurde mit Sexismus innerhalb linker Gruppen umgegangen? Wie haben
+      sich sexistische Strukturen innerhalb linker Gruppen reproduziert?
+    </li>
+    <li>
+      Was passierte während der Zeit in der der Staatskommissar die Verwaltung
+      übernahm? Welche langfristigen Folgen hatte das auf die studentische
+      Selbstverwaltung (u.a. auch die Wahlbeteiligung und die Sitzverteilung im
+      StuPa). Wie wirkte sich das auf die Meinung der Universität und der
+      Kommunal- und Landespolitik auf die studentische Selbstverwaltung in
+      Göttingen aus?
+    </li>
+    <li>
+      Was führte zu der endgültigen Abschaffung der autonomen Referate? Hatte
+      es Einfluss darauf, dass in den vergangenen Jahren Studierendenparlamente
+      mit linken Mehrheiten autonome Referate in Göttingen nicht wieder
+      eingeführt haben?
+    </li>
+  </ul>
+</div>
+<div class="footnotes">
+  <ol>
+    <li><code>1989-01-25 Referat_1.jpg</code></li>
+    <li><code>1986-01-21 Rcds.pdf</code></li>
+    <li><code>1986-02-11 Rcds 2.pdf</code></li>
+    <li><code>1985-05-06 kb.pdf</code></li>
+    <li><code>1985-01-15 Lethargie.pdf</code></li>
+    <li><code>1986-06-10 VV.pdf</code></li>
+    <li>Andrea Gabler, <i>Sturm im Elfenbeinturm: Positionen und
+Aktionsformen des Göttinger AStA zu Wissenschaftsbetrieb und politischem
+ Mandat von 1967 bis 1987</i> (Göttingen: Verlag Die Werkstatt, 1993).</li>
+    <li><code>1987-11 autonome Referate Ende.pdf</code></li>
+  </ol>
+</div>
             </div>
             <div id="text-flz">
               <h3>FrauenLesbenZentrum</h3>
